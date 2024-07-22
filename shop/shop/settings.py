@@ -1,7 +1,5 @@
-
 from pathlib import Path
 from djongo.operations import DatabaseOperations
-
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -9,19 +7,11 @@ DatabaseOperations.conditional_expression_supported_in_where_clause = (
     lambda *args, **kwargs: False
 )
 
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
-
-# SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-sxhm5w-57k#cn0fm9@7=q7wli1xl#ae7t#!zhdqnk3&&_%9(oi'
 
-# SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
 ALLOWED_HOSTS = ['localhost', '127.0.0.1']
-
-
-# Application definition
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -72,8 +62,6 @@ DATABASES = {
     }
 }
 
-
-
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
@@ -89,7 +77,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 LANGUAGE_CODE = 'en-us'
 
 TIME_ZONE = 'UTC'
@@ -98,9 +85,16 @@ USE_I18N = True
 
 USE_TZ = True
 
-
-
 STATIC_URL = 'static/'
-STATICFILES_DIRS = [BASE_DIR/'static']
+STATICFILES_DIRS = [BASE_DIR / 'static']
+
+MEDIA_URL = 'media/'
+MEDIA_ROOT = BASE_DIR / 'media'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+# settings.py
+
+# settings.py
+

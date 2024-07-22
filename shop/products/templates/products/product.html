@@ -1,0 +1,101 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+    <title>
+        Товар
+    </title>
+{% endblock %}
+
+{% block content %}
+        <!-- Main -->
+    <main class="main--wrapper" >
+        <!-- Shop-details start -->
+        <section class="shop-details-area pb-80 p-4">
+            <div class="container" >
+                <div class="row" style="margin-bottom: 100px;">
+                    <div class="col-lg-5 col-md-6 order-1 order-lg-1">
+                        <div class="pro-img">
+                            <div class="tab-content" id="myTabContent">
+                                <div class="tab-pane fade show active" id="home5" role="tabpanel" aria-labelledby="home-tab5"><img src="{{ product.image.url }}" class="img-fluid" alt=""></div>
+
+                                <div class="tab-pane fade" id="profile5" role="tabpanel" aria-labelledby="profile-tab5">
+                                    <img src="img/allproducts/pro-details.jpg" class="img-fluid" alt="">
+                                </div>
+
+                                <div class="tab-pane fade" id="contact5" role="tabpanel" aria-labelledby="contact-tab5">
+                                    <img src="img/allproducts/pro-details.jpg" class="img-fluid" alt="">
+                                </div>
+                            </div>
+                            <ul class="nav" id="myTab1" role="tablist">
+                                <li class="nav-item">
+                                    <a class="nav-link active" id="home-tab5" data-toggle="tab" href="#home5" role="tab" aria-controls="home5" aria-selected="true">
+                                        <img src="img/allproducts/pro-details-small-1.jpg" class="img-fluid" alt="">
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" id="profile-tab5" data-toggle="tab" href="#profile5" role="tab" aria-controls="profile5" aria-selected="false">
+                                        <img src="img/allproducts/pro-details-small-2.jpg" class="img-fluid" alt="">
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" id="contact-tab5" data-toggle="tab" href="#contact5" role="tab" aria-controls="contact5" aria-selected="false">
+                                        <img src="img/allproducts/pro-details-small-3.jpg" class="img-fluid" alt="">
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-12 order-3 order-lg-2">
+                        <div class="pro-content">
+                            <span>{{ product.category }}</span>
+                            <h5 class="title">{{ product.name }}</h5>
+
+                            <div class="pro-social mb-45">
+                                <a href="#"><img src="img/payment/pro-details-social.jpg" class="img-fluid" alt=""></a>
+                            </div>
+                            <div class="about-pro">
+                                <p>{{ product.description }}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 order-2 order-lg-3">
+                        <div class="cart-wrapper">
+                            <div class="cart-title">
+                                <h6>Наличие: <span>В наличии</span></h6>
+                            </div>
+                            <div class="price mt-15 mb-20">
+                                {% if product.discount %}
+                                    <p><s> {{ product.price }}₽</s></p>
+                                    <h4><strong> {{ product.sell_price }}₽</strong></h4>
+                                {% else %}
+                                    <h4><strong> {{ product.price }}₽</strong></h4>
+                                {% endif %}
+                            </div>
+                            <form action="#">
+                                <div class="field">
+                                    <label>Количество:</label>
+                                    <input type="number">
+                                </div>
+                                <div class="field">
+                                    <label>Цвет:</label>
+                                    <p>{{ product.color }}</p>
+                                    <!--<select name="select">
+                                        <option value="1">Rose Gold</option>
+                                        <option value="2">Red Gold</option>
+                                        <option value="3">Yellow Gold</option>
+                                        <option value="4">Blue Gold</option>
+                                        <option value="5">Gray Gold</option>
+                                    </select>
+                                    -->
+                                </div>
+                            </form>
+                            <a href="#" class="buy-button">Add To Cart</a>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+{% endblock %}

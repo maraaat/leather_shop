@@ -51,7 +51,7 @@
                                 </div>
                                 <div class="logo--header__middle">
                                     <div class="logo">
-                                        <a class="logo__link" href="index.html"><img src="{% static 'img/logo/h2__logo.png' %}" alt=""></a>
+                                        <a class="logo__link" href="{% url 'main:about' %}"><img src="{% static 'img/logo/h2__logo.png' %}" alt=""></a>
                                     </div>
                                 </div>
                                 <div class="cart--header__middle cart--header__three">
@@ -66,7 +66,7 @@
                                         <ul>
                                             <li class="mb-20">
                                                 <div class="cart-image">
-                                                    <a href="#"><img src="{% static 'img/allproducts/cart__thumb__1.jpg' %}" alt=""></a>
+                                                    <a href="{% url 'main:about' %}"><img src="{% static 'img/allproducts/cart__thumb__1.jpg' %}" alt=""></a>
                                                 </div>
                                                 <div class="cart-text">
                                                     <a href="#" class="title f-400 cod__black-color">Pink Jacket</a>
@@ -118,31 +118,18 @@
                                 <nav id="mobile-menu">
                                     <ul>
                                         <li>
-                                            <a href="widgets.html">О нас</a>
+                                            <a href="{% url 'main:about' %} ">О нас</a>
                                         </li>
                                         <li class="mega-menu static dropdown-icon">
-                                            <a href="shop.html">Магазин</a>
-                                            <ul class="submenu mega-full">
-                                                <li>
-                                                    <a href="shop.html">Все товары</a>
-                                                    <ul class="submenu  level-1">
-                                                        <li>
-                                                            <a href="shop.html">Для документов</a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="shop.html">Для денег</a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="shop.html">Ремни</a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="shop.html">Сумки</a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="shop.html">Аксессуары</a>
-                                                        </li>
-                                                    </ul>
-                                                </li>
+                                            <a href="{% url 'cat:catalog' %}">Магазин</a>
+                                            <ul class="submenu">
+                                                <ul class="level-3">
+                                                    {% for category in categories %}
+                                                    <li>
+                                                        <a href="{% url 'cat:category' category.slug %}">{{ category.name }}</a>
+                                                    </li>
+                                                    {% endfor %}
+                                                </ul>
                                             </ul>
                                         </li>
                                         <li>

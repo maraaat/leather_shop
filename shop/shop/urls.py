@@ -1,8 +1,14 @@
 from django.contrib import admin
 from django.urls import path, include
+from django.conf.urls.static import static
+
+from shop import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('catalog', include("products.urls"), name="catalog"),
-    path('about', include("app.urls"), name="about")
+    path('catalog/', include("products.urls", namespace='cat')),
+    path('', include("app.urls", namespace='main'))
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
