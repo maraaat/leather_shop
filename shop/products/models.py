@@ -37,11 +37,21 @@ class Products(models.Model):
     def __str__(self):
         return self.name
 
+    # def sell_price(self):
+    #     discount = Decimal(self.discount.to_decimal())
+    #     if discount and discount > 0:
+    #         price = Decimal(self.price.to_decimal())
+    #         discount = Decimal(self.discount.to_decimal())
+    #         discounted_price = price - (price * discount / Decimal(100))
+    #         return round(discounted_price, 2)
+    #
+    #     return self.price.to_decimal()
+
     def sell_price(self):
         if self.discount:
-            price = Decimal(self.price.to_decimal())
-            discount = Decimal(self.discount.to_decimal())
-            discounted_price = price - (price * discount / Decimal(100))
-            return round(discounted_price, 2)
+            return self.price.to_decimal() - self.price.to_decimal() * self.discount.to_decimal() / 100
 
-        return self.price.to_decimal()
+    def has_discount(self):
+        if self.discount.to_decimal():
+            return True
+        return False

@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block title %}
-    <title>Каталог товаров | AMmade</title>
+    <title> {{title}}</title>
 {% endblock %}
 
 {% block content %}
@@ -15,17 +15,15 @@
                     <img src="{{ product.image.url }}" class="img-fluid" alt="">
                 </a></p>
 
-                <div class="card-body">
+                <div class="card-body"  >
                     <a href="{% url 'cat:product' product.slug %}" style="color: #000000 !important; font-size: 20px; font-family: Comic Sans MS;" >
                         {{ product.name }}
                     </a>
-
                     <p class="card-text text-truncate" style="color: #000000 !important; font-size: 14px; font-family: Comic Sans MS;">
                         {{ product.description }}
                     </p>
-
                     <div class="d-flex justify-content-between">
-                        {% if product.discount %}
+                        {% if product.has_discount %}
                             <p><s> {{ product.price }}₽</s></p>
                             <p><strong> {{ product.sell_price }}₽</strong></p>
                         {% else %}

@@ -3,7 +3,7 @@
 
 {% block title %}
     <title>
-        Товар
+        {{ product.name }} | AMmade
     </title>
 {% endblock %}
 
@@ -62,10 +62,15 @@
                     <div class="col-lg-3 col-md-6 order-2 order-lg-3">
                         <div class="cart-wrapper">
                             <div class="cart-title">
-                                <h6>Наличие: <span>В наличии</span></h6>
+                                {% if product.quantity %}
+                                    <h6>Наличие: <span>В наличии</span></h6>
+                                {% else %}
+                                    <h6>Наличие: <span style="color: #990303;">Нет в наличии</span></h6>
+                                {% endif %}
+
                             </div>
                             <div class="price mt-15 mb-20">
-                                {% if product.discount %}
+                                {% if product.has_discount %}
                                     <p><s> {{ product.price }}₽</s></p>
                                     <h4><strong> {{ product.sell_price }}₽</strong></h4>
                                 {% else %}
@@ -73,10 +78,7 @@
                                 {% endif %}
                             </div>
                             <form action="#">
-                                <div class="field">
-                                    <label>Количество:</label>
-                                    <input type="number">
-                                </div>
+
                                 <div class="field">
                                     <label>Цвет:</label>
                                     <p>{{ product.color }}</p>

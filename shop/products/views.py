@@ -20,16 +20,18 @@ def show_item(request, product_slug):
     }
     return render(request, "products/product.html", context)
 
+
 def show_category_items(request, category_slug):
     categories = Categories.objects.all()
 
     category = Categories.objects.get(slug=category_slug)
-    if category_slug=="vse-tovary":
+    if category_slug == "vse-tovary":
         return show_catalog(request)
+    title = f"{category} | AMmade"
     products = Products.objects.filter(category=category)
     context = {
         'categories': categories,
-        "title": 'Каталог товаров | AMmade',
+        "title": title,
         'products': products
     }
     return render(request, "products/catalog.html", context)
