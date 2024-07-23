@@ -49,7 +49,7 @@ class Products(models.Model):
 
     def sell_price(self):
         if self.discount:
-            return self.price.to_decimal() - self.price.to_decimal() * self.discount.to_decimal() / 100
+            return round(self.price.to_decimal() - self.price.to_decimal() * self.discount.to_decimal() / 100, 2)
 
     def has_discount(self):
         if self.discount.to_decimal():

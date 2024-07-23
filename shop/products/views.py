@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from .models import Categories, Products
+from .utlils import search
 
 
 def show_catalog(request):
@@ -11,6 +12,18 @@ def show_catalog(request):
         'products': products
     }
     return render(request, "products/catalog.html", context)
+
+def catalog_search(request):
+    categories = Categories.objects.all()
+    query = request.GET.get('q', None)
+    products = search(query)
+    context = {
+        'categories': categories,
+        "title": query,
+        'products': products
+    }
+    return render(request, "products/catalog.html", context)
+
 
 
 def show_item(request, product_slug):

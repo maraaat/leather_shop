@@ -44,9 +44,9 @@
                         <div class="col-sm-11">
                             <div class="content--header__middle d-flex align-items-center justify-content-between">
                                 <div class="header-search-three d-none d-md-block">
-                                    <form action="#">
-                                        <input type="search" placeholder="Поиск товаров">
-                                        <button type="submit"><i class="icofont-search-2"></i></button>
+                                    <form action="{% url 'cat:search' %}" method="get">
+                                        <input type="search" placeholder="Поиск товаров"  style="font-size: 25px;" name="q">
+                                        <button type="submit" style="font-size: 25px;"><i class="icofont-search-2"></i></button>
                                     </form>
                                 </div>
                                 <div class="logo--header__middle">
