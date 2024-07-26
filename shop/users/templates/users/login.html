@@ -1,0 +1,53 @@
+{% extends "base.html"%}
+{% load static %}
+
+{% block title %}
+    <title>Авторизация | AMmade</title>
+{% endblock %}
+
+{% block content %}
+<main class="main--wrapper">
+            <!-- reg area start -->
+            <section class="reg-area pt-60 pb-75">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-12 text-center">
+                            <div class="reg-wrapper">
+                                <ul class="nav" id="myTab" role="tablist">
+                                    <li class="nav-item mr-40">
+                                        <a class="nav-link active" id="home-tab" data-toggle="tab" href="#" role="tab" aria-controls="home" aria-selected="true">Вход</a>
+                                    </li>
+                                    <li class="nav-item ml-40">
+                                        <a class="nav-link" id="profile-tab" role="tab"  aria-controls="home" aria-selected="false" href="{% url 'user:reg' %}"> Регистрация </a>
+                                    </li>
+                                </ul>
+
+                                <div class="tab-content" id="myTabContent">
+                                    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                                        <!-- Login -->
+
+                                        <form action="{% url 'user:login' %}" method="post">
+                                            {% csrf_token %}
+                                            {{form}}
+
+                                            <button type="submit">Вход</button>
+<!--                                            <span>-->
+<!--                                                <input type="checkbox" class="check" style="transform: scale(1);">-->
+<!--                                                Запомнить меня-->
+<!--                                            </span>-->
+                                            <a href="#" class="lost-pass">Забыли пароль?</a>
+                                        </form>
+                                    </div>
+
+                                        <!-- End  -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- reg area end -->
+        </main>
+
+{% endblock  %}

@@ -13,6 +13,7 @@ def show_catalog(request):
     }
     return render(request, "products/catalog.html", context)
 
+
 def catalog_search(request):
     categories = Categories.objects.all()
     query = request.GET.get('q', None)
@@ -23,7 +24,6 @@ def catalog_search(request):
         'products': products
     }
     return render(request, "products/catalog.html", context)
-
 
 
 def show_item(request, product_slug):

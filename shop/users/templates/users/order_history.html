@@ -1,0 +1,57 @@
+{% extends "base_profile.html"%}
+{% load static %}
+
+{% block title %}
+    <title> История заказов | AMmade</title>
+{% endblock %}
+
+{% block content_profile %}
+<main class="main--wrapper">
+            <div class="container">
+                <div class="row">
+                    <div id="content" class="col-sm-9">
+                        <br>
+                        <h1 class="h4 text-center content-title">История заказов</h1>
+
+                    <br>
+                      <div class="table-responsive">
+                        <table class="table">
+                          <thead>
+                            <tr>
+                              <td class="text-right">№ Заказа</td>
+                              <td class="text-left">Покупатель</td>
+                              <td class="text-right">Кол-во товара</td>
+                              <td class="text-left">Статус заказа</td>
+                              <td class="text-right">Итого</td>
+                              <td class="text-left">Добавлено</td>
+                              <td></td>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td class="text-right">#67226</td>
+                              <td class="text-left">Марат Ахмедиев</td>
+                              <td class="text-right">1</td>
+                              <td class="text-left">Отправлен</td>
+                              <td class="text-right">870 р.</td>
+                              <td class="text-left">09.08.2022</td>
+                              <td class="text-right"><a href="#" data-toggle="tooltip" title="" class="text-nowrap" data-original-title="Просмотр"><i class="fa fa-file-text"></i> Просмотр</a></td>
+                            </tr>
+                                        <tr>
+                              <td class="text-right">#48816</td>
+                              <td class="text-left">Марат Ахмедиев</td>
+                              <td class="text-right">5</td>
+                              <td class="text-left">Отправлен</td>
+                              <td class="text-right">2 480 р.</td>
+                              <td class="text-left">25.12.2020</td>
+                              <td class="text-right"><a href="#" data-toggle="tooltip" title="" class="text-nowrap" data-original-title="Просмотр"><i class="fa fa-file-text"></i> Просмотр</a></td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+        </div>
+    </div>
+</main>
+
+{% endblock  %}

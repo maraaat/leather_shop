@@ -1,0 +1,55 @@
+{% extends "base.html"%}
+{% load static %}
+
+{% block title %}
+    <title>Авторизация | AMmade</title>
+{% endblock %}
+
+{% block content %}
+<main class="main--wrapper">
+            <!-- reg area start -->
+            <section class="reg-area pt-60 pb-75">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-12 text-center">
+                            <div class="reg-wrapper">
+                                <ul class="nav" id="myTab" role="tablist">
+                                    <li class="nav-item mr-40">
+                                        <a class="nav-link " id="home-tab" href="{% url 'user:login' %}" role="tab" aria-controls="home" aria-selected="false">Вход</a>
+                                    </li>
+                                    <li class="nav-item ml-40">
+                                        <a class="nav-link active" id="profile-tab" data-toggle="tab" href="{% url 'user:reg' %}" role="tab" aria-controls="profile" aria-selected="true">Регистрация</a>
+                                    </li>
+                                </ul>
+                                        <!-- Start create account  -->
+                                        <form action="#">
+                                            <div class="field">
+                                                <label>Имя пользователя</label>
+                                                <input type="text" placeholder="Username" required>
+                                            </div>
+                                            <div class="field">
+                                                <label>Email</label>
+                                                <input type="text" placeholder="Email Address" required>
+                                            </div>
+                                            <div class="field">
+                                                <label>Пароль</label>
+                                                <input type="password" placeholder="Password" required>
+                                            </div>
+                                            <button type="submit">Зарегистрировать</button>
+                                            <span>
+                                                <input type="checkbox" class="check">
+                                                Запомнить меня
+                                            </span>
+                                            <a href="#" class="lost-pass">Забыли пароль?</a>
+                                        </form>
+                                        <!-- End  -->
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- reg area end -->
+        </main>
+
+{% endblock  %}

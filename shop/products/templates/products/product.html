@@ -5,7 +5,32 @@
     <title>
         {{ product.name }} | AMmade
     </title>
+
+    <style>
+       .scale {
+        display: inline-block; /* Строчно-блочный элемент */
+        overflow: hidden; /* Скрываем всё за контуром */
+       }
+       .scale img {
+        transition: 0.5s; /* Время эффекта */
+        display: block; /* Убираем небольшой отступ снизу */
+       }
+       .scale img:hover {
+        transform: scale(1.4); /* Увеличиваем масштаб */
+       }
+
+       .img-wrapper {
+        display: flex;
+
+        overflow: hidden;
+        min-width: 500px;
+        min-height: 500px;
+        margin: auto;
+        max-height: 500px;
+        max-width: 500px;
+        </style>
 {% endblock %}
+
 
 {% block content %}
         <!-- Main -->
@@ -16,8 +41,8 @@
                 <div class="row" style="margin-bottom: 100px;">
                     <div class="col-lg-5 col-md-6 order-1 order-lg-1">
                         <div class="pro-img">
-                            <div class="tab-content" id="myTabContent">
-                                <div class="tab-pane fade show active" id="home5" role="tabpanel" aria-labelledby="home-tab5"><img src="{{ product.image.url }}" class="img-fluid" alt=""></div>
+                            <div class="tab-content " id="myTabContent">
+                                <div class="tab-pane fade show active scale" id="home5" role="tabpanel" aria-labelledby="home-tab5"><img src="{{ product.image.url }}" class="img-fluid scale img-wrapper" alt=""></div>
 
                                 <div class="tab-pane fade" id="profile5" role="tabpanel" aria-labelledby="profile-tab5">
                                     <img src="img/allproducts/pro-details.jpg" class="img-fluid" alt="">
@@ -92,7 +117,7 @@
                                     -->
                                 </div>
                             </form>
-                            <a href="#" class="buy-button">Add To Cart</a>
+                            <a href="#" class="buy-button">В корзину</a>
 
                         </div>
                     </div>

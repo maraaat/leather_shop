@@ -35,7 +35,7 @@ class Products(models.Model):
         ordering = ["id"]
 
     def __str__(self):
-        return self.name
+        return f"{self.name} | Количество: {self.quantity}"
 
     # def sell_price(self):
     #     discount = Decimal(self.discount.to_decimal())

@@ -3,6 +3,18 @@
 
 {% block title %}
     <title> {{title}}</title>
+
+    <style>
+       .img-wrapper {
+        display: flex;
+
+        overflow: hidden;
+        min-width: 460px;
+        min-height: 400px;
+        margin: auto;
+        max-height: 400px;
+        max-width: 460px;
+        </style>
 {% endblock %}
 
 {% block content %}
@@ -12,7 +24,7 @@
         <div class="col-lg-4  p-4">
             <div class="card" >
                 <p><a href="{% url 'cat:product' product.slug %}">
-                    <img src="{{ product.image.url }}" class="img-fluid" alt="">
+                    <img src="{{ product.image.url }}" class="img-fluid img-wrapper"  alt="">
                 </a></p>
 
                 <div class="card-body"  >
@@ -30,7 +42,7 @@
                             <p><strong> {{ product.price }}₽</strong></p>
                         {% endif %}
 
-                        <a href="#" class="btn add-to-cart" style="
+                        <!-- <a href="#" class="btn add-to-cart" style="
                                             display: inline-block !important;
                                             text-decoration: none !important;
                                             background-color: #c3b187 !important;
@@ -38,8 +50,23 @@
                                             border: 3px solid #000000 !important;
                                             border-radius: 100px !important;
                                             font-size: 16px !important;
-                                            padding: 15px 20px !important;  !important;"
-                        > Добавить в корзину </a>
+                                            width: 50%;"
+                        > Купить </a>
+                        -->
+                        <a href="#" data-toggle="tooltip" data-html="true" data-placement="bottom" title="" class="btn btn-primary" onclick="" data-original-title="" style="
+                                            display: inline-block !important;
+                                            text-decoration: none !important;
+                                            background-color: #c3b187 !important;
+                                            color: #000000 !important;
+                                            border: 3px solid #000000 !important;
+                                            border-radius: 100px !important;
+                                            font-size: 14px !important;
+                                            width: 50%;"
+                        >
+                            <i class="fa fa-fw fa-shopping-cart" style="background-color: #c3b187;">
+
+                            </i> Купить
+                        </a>
                     </div>
                 </div>
             </div>

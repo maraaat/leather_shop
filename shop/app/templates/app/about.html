@@ -3,6 +3,17 @@
 
 {% block title %}
     <title>О нас | AMmade</title>
+
+    <style>
+       .img-wrapper {
+        display: flex;
+        overflow: hidden;
+        min-width: 500px;
+        max-width: 500px;
+        min-height: 450px;
+        max-height: 450px;
+        margin: auto;
+    </style>
 {% endblock %}
 
 {% block content %}
@@ -86,7 +97,7 @@
                     <div class="col-md-6">
                         <div class="about-single mb-30">
                             <div class="about-img mb-20">
-                                <img src="{% static 'img/offer/about__thumb__24.jpg' %}" class="img-fluid" alt="">
+                                <img src="{% static 'img/offer/about__thumb__24.jpg' %}" class="img-fluid img-wrapper" alt="">
                             </div>
                             <p>Немного истории. Как все начиналось? Это было далекое начало 2020 года.
                             В интернете начали встречаться ролики и статьи о создании различных изделий с, как оказалось, сомнительными технологиями производства.
@@ -96,7 +107,7 @@
                     <div class="col-md-6">
                         <div class="about-single mb-30">
                             <div class="about-img mb-20">
-                                <img src="{% static 'img/offer/about__thumb__25.jpg' %}" class="img-fluid" alt="">
+                                <img src="{% static 'img/offer/about__thumb__25.jpg' %}" class="img-fluid img-wrapper" alt="">
                             </div>
                             <p>Продолжение. В определенный момент были заказаны первые инструменты, некоторые заказывал брат, что-то бралось из гаража.
                             Так и образовался первый набор инструментов. Кожа была из старых сапогов и был сшит самый-самый первый кардхолдер и следом ремешок для часов (на фото).
