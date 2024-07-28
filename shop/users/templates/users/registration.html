@@ -22,25 +22,83 @@
                                     </li>
                                 </ul>
                                         <!-- Start create account  -->
-                                        <form action="#">
+                                        <form action="{% url 'user:reg' %}" method="post">
+                                            {% csrf_token %}
                                             <div class="field">
-                                                <label>Имя пользователя</label>
-                                                <input type="text" placeholder="Username" required>
+                                                <label for="id_email">Почтовый адрес</label>
+                                                <input type="email" placeholder="" value="{% if form.email.value%}  {{form.email.value}} {% endif%}" name="email" id="id_email" required>
+                                                      {% if form.email.errors %}
+                                                        <ul class="errorlist alert alert-danger alert-dismissible fade show">
+                                                            {% for error in form.email.errors %}
+                                                                <li>{{ error }}</li>
+                                                            {% endfor %}
+                                                    </ul>
+                                                {% endif %}
                                             </div>
                                             <div class="field">
-                                                <label>Email</label>
-                                                <input type="text" placeholder="Email Address" required>
+                                                <label for="id_username" >Никнейм пользователя</label>
+                                                <input type="text" placeholder="" value="{% if form.username.value%}  {{form.username.value}} {% endif%}" name="username" id="id_username" required >
+                                                {% if form.username.errors %}
+                                                            <ul class="errorlist alert alert-danger alert-dismissible fade show">
+                                                                {% for error in form.username.errors %}
+                                                                    <li>{{ error }}</li>
+                                                                {% endfor %}
+                                                            </ul>
+                                                        {% endif %}
                                             </div>
                                             <div class="field">
-                                                <label>Пароль</label>
-                                                <input type="password" placeholder="Password" required>
+                                                <label for="id_username" >Номер телефона</label>
+                                                <input type="text" placeholder="" value="{% if form.phone.value%}  {{form.phone.value}} {% endif%}" name="phone" id="id_phone" required >
+                                                {% if form.phone.errors %}
+                                                    <ul class="errorlist alert alert-danger alert-dismissible fade show">
+                                                        {% for error in form.phone.errors %}
+                                                            <li>{{ error }}</li>
+                                                        {% endfor %}
+                                                    </ul>
+                                                {% endif %}
                                             </div>
-                                            <button type="submit">Зарегистрировать</button>
-                                            <span>
-                                                <input type="checkbox" class="check">
-                                                Запомнить меня
-                                            </span>
-                                            <a href="#" class="lost-pass">Забыли пароль?</a>
+                                            <div class="field">
+                                                <label for="id_username" >Фамилия, имя, отчество (при наличии) </label>
+                                                <input type="text" placeholder="" value="{% if form.fio.value%}  {{form.fio.value}} {% endif%}" name="fio" id="id_fio" required >
+                                                {% if form.fio.errors %}
+                                                            <ul class="errorlist alert alert-danger alert-dismissible fade show">
+                                                                {% for error in form.fio.errors %}
+                                                                    <li>{{ error }}</li>
+                                                                {% endfor %}
+                                                            </ul>
+                                                        {% endif %}
+                                            </div>
+
+                                            <div class="field">
+                                                <label for="id_password1">Пароль</label>
+                                                <input type="password" placeholder="" name="password1" id="id_password1" required>
+                                                    {% if form.password1.errors %}
+                                                        <ul class="errorlist alert alert-danger alert-dismissible fade show">
+                                                            {% for error in form.password1.errors %}
+                                                                <li>{{ error }}</li>
+                                                            {% endfor %}
+                                                        </ul>
+                                                    {% endif %}
+                                            </div>
+
+                                            <div class="field">
+                                                <label for="id_password2">Подтверждение пароля</label>
+                                                <input type="password" placeholder="" name="password2" id="id_password2" required>
+                                            {% if form.password2.errors %}
+                                                <ul class="errorlist alert alert-danger alert-dismissible fade show">
+                                                    {% for error in form.password2.errors %}
+                                                        <li>{{ error }}</li>
+                                                    {% endfor %}
+                                                </ul>
+                                            {% endif %}
+                                            </div>
+
+                                            <button type="submit" style="background: #dab970; text-align:center; color: #000;">Зарегистрироваться</button>
+<!--                                            <span>-->
+<!--                                                <input type="checkbox" class="check">-->
+<!--                                                Запомнить меня-->
+<!--                                            </span>-->
+<!--                                            <a href="#" class="lost-pass">Забыли пароль?</a>-->
                                         </form>
                                         <!-- End  -->
 

@@ -16,14 +16,16 @@
 
                     <br>
                     <div class="simple-content">
-                        <form action="index.php?route=account/simpleedit" method="post" enctype="multipart/form-data" id="simplepage_form">
+                        <form action="{% url 'user:profile' %}" method="post" enctype="multipart/form-data" id="simplepage_form">
+                            {% csrf_token %}
+
                             <div class="simpleregister" id="simpleedit">
                                 <div class="simpleregister-block-content">
                                     <fieldset class="form-horizontal">
                                         <div class="form-group required row-edit_email">
                                             <label class="control-label col-sm-2" for="edit_email">Email</label>
                                                 <div class="col-sm-10">
-                                                    <input class="form-control" type="email" name="edit[email]" id="edit_email" value="{{user.email}}" placeholder="" data-reload-payment-form="true">
+                                                    <input class="form-control" type="email" name="email" id="edit_email" value="{{user.email}}" placeholder="Почтовый адрес" data-reload-payment-form="true">
                                                         <div class="simplecheckout-rule-group" data-for="edit_email">
                                                             <div style="display:none;" data-for="edit_email" data-rule="api" class="simplecheckout-error-text simplecheckout-rule" data-method="checkEmailForUniqueness" data-filter="edit_register" data-filter-value="1" data-required="true">
                                                                 Адрес уже зарегистрирован!
@@ -37,7 +39,7 @@
                                             <div class="form-group required row-edit_firstname">
                                                 <label class="control-label col-sm-2" for="edit_firstname">Никнейм</label>
                                                     <div class="col-sm-10">
-                                                        <input class="form-control" type="text" name="edit[firstname]" id="edit_firstname" value="{{ user.username}}" placeholder="" data-reload-payment-form="true">
+                                                        <input class="form-control" type="text" name="username" id="edit_firstname" value="{{ user.username}}" placeholder="Никнейм" data-reload-payment-form="true">
                                                         <div class="simplecheckout-rule-group" data-for="edit_firstname">
                                                             <div style="display:none;" data-for="edit_firstname" data-rule="byLength" class="simplecheckout-error-text simplecheckout-rule" data-length-min="1" data-length-max="32" data-required="true">
                                                                 Имя должно быть от 3 до 32 символов!
@@ -48,7 +50,7 @@
                                             <div class="form-group required row-edit_lastname">
                                                 <label class="control-label " for="edit_lastname">Фамилия, имя и отчество (при наличии)</label>
                                                     <div class="col-sm-10">
-                                                        <input class="form-control" type="text" name="edit[lastname]" id="edit_lastname" value="{{ user.fio }}" placeholder="" data-reload-payment-form="true">
+                                                        <input class="form-control" type="text" name="fio" id="edit_lastname" value="{{ user.fio }}" placeholder="ФИО" data-reload-payment-form="true">
                                                         <div class="simplecheckout-rule-group" data-for="edit_lastname">
                                                             <div style="display:none;" data-for="edit_lastname" data-rule="byLength" class="simplecheckout-error-text simplecheckout-rule" data-length-min="1" data-length-max="32" data-required="true">
                                                                 Фамилия должна быть от 1 до 32 символов!
@@ -57,9 +59,9 @@
                                                     </div>
                                             </div>
                                             <div class="form-group required row-edit_telephone">
-                                                <label class="control-label col-sm-2" for="edit_telephone">Телефон</label>
+                                                <label class="control-label col-sm-2" for="edit_telephone">Номер телефона</label>
                                                 <div class="col-sm-10">
-                                                    <input class="form-control" type="tel" name="edit[telephone]" id="edit_telephone" value="89625440393" placeholder="" data-reload-payment-form="true">
+                                                    <input class="form-control" type="tel" name="phone" id="edit_telephone" value="{{ user.phone }}" placeholder="Ноемр телефона" data-reload-payment-form="true">
                                                     <div class="simplecheckout-rule-group" data-for="edit_telephone">
                                                         <div style="display:none;" data-for="edit_telephone" data-rule="byLength" class="simplecheckout-error-text simplecheckout-rule" data-length-min="10" data-length-max="15" data-required="true">
                                                             Телефон должен быть от 10 до 15 символов!
@@ -69,11 +71,8 @@
                                             </div>
                                     </fieldset>
                                 </div>
-                                <div class="simpleregister-button-block buttons">
-                                    <div class="simpleregister-button-right " style="text-align:center">
-                                        <a class="button btn-primary button_oc btn" data-onclick="submit" id="simpleregister_button_confirm" style="background: #dab970;"><span>Сохранить изменения</span></a>
-                                    </div>
-                                </div>
+
+                                 <button class="button btn-primary button_oc btn"  type="submit"  style="background: #dab970; text-align:center; color: #000;"  >Сохранить изменения</button>
 
                             </div>
                         </form>

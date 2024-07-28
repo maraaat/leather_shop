@@ -5,7 +5,7 @@ from django.conf.urls.static import static
 from shop import settings
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('admin/', admin.site.urls, name='admin'),
     path('catalog/', include("products.urls", namespace='cat')),
     path('', include("app.urls", namespace='main')),
     path('user/', include("users.urls", namespace='user'))

@@ -2,13 +2,14 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.contrib import auth
 from django.urls import reverse
-
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login
 
 from products.models import Categories
 
-from .forms import UserLoginForm
+from .forms import UserLoginForm, UserSetChangesForm, UserRegistrationForm
 from .models import User
+
 
 def login(request):
     categories = Categories.objects.all()
@@ -32,7 +33,17 @@ def login(request):
 
 def reg(request):
     categories = Categories.objects.all()
-    form = UserLoginForm
+    if request.method == 'POST':
+        form = UserRegistrationForm(data=request.POST)
+
+        if form.is_valid():
+            form.save()
+            user = form.instance
+            auth.login(request, user)
+            return HttpResponseRedirect(reverse('user:profile'))
+    else:
+        form = UserRegistrationForm()
+
     context = {
         'categories': categories,
         'form': form,
@@ -40,38 +51,39 @@ def reg(request):
     return render(request, "users/registration.html", context)
 
 
+@login_required
 def logout(request):
-    categories = Categories.objects.all()
-    context = {
-        'categories': categories,
-    }
     auth.logout(request)
     return HttpResponseRedirect(reverse('user:login'))
 
+
+@login_required
 def profile(request):
     categories = Categories.objects.all()
+
+    if request.method == 'POST':
+        form = UserSetChangesForm(data=request.POST, instance=request.user)
+
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect(reverse('user:profile'))
+    else:
+        form = UserSetChangesForm(instance=request.user)
+
     context = {
         'categories': categories,
-        'user': request.user
+        'form': form
     }
-    if request.user.is_authenticated:
-        return render(request, "users/profile.html", context)
-    else:
-        return render(request, "users/login.html", context)
+
+    return render(request, "users/profile.html", context)
 
 
+@login_required
 def history(request):
     categories = Categories.objects.all()
     context = {
         'categories': categories,
     }
-    if request.user.is_authenticated:
-        return render(request, "users/order_history.html", context)
-    else:
-        return render(request, "users/login.html", context)
 
-
-def save_changes(request):
-
-
+    return render(request, "users/order_history.html", context)
 

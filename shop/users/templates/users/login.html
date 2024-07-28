@@ -28,9 +28,32 @@
 
                                         <form action="{% url 'user:login' %}" method="post">
                                             {% csrf_token %}
-                                            {{form}}
 
-                                            <button type="submit">Вход</button>
+<!--                                            {{form.as_p}}-->
+
+                                            <div class="field">
+                                                <label for="id_username" >Никнейм пользователя</label>
+                                                <input type="text" placeholder="" value="{% if form.username.value%}  {{form.username.value}} {% endif%}" name="username" id="id_username" required >
+                                                {% if form.username.errors %}
+                                                            <ul class="errorlist alert alert-danger alert-dismissible fade show">
+                                                                {% for error in form.username.errors %}
+                                                                    <li>{{ error }}</li>
+                                                                {% endfor %}
+                                                            </ul>
+                                                        {% endif %}
+                                            </div>
+                                            <div class="field">
+                                                <label for="id_password">Пароль</label>
+                                                <input type="password" placeholder="" name="password" id="id_password" required>
+                                                      {% if form.password.errors %}
+                                                        <ul class="errorlist alert alert-danger alert-dismissible fade show">
+                                                            {% for error in form.password.errors %}
+                                                                <li>{{ error }}</li>
+                                                            {% endfor %}
+                                                    </ul>
+                                                {% endif %}
+                                            </div>
+                                            <button type="submit" style="background: #dab970; text-align:center; color: #000;">Вход</button>
 <!--                                            <span>-->
 <!--                                                <input type="checkbox" class="check" style="transform: scale(1);">-->
 <!--                                                Запомнить меня-->
