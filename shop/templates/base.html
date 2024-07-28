@@ -40,9 +40,15 @@
                                     <nav class="nav--top__list">
                                         <ul class="list-inline">
                                             <li>
-                                                <a class="nav--top__link   position-relative f-400 cod__black-color" style="font-size: 18px;" href="{% url 'user:login' %}">
+                                                {% if user.is_authenticated %}
+                                                    <a class="nav--top__link   position-relative f-400 cod__black-color" style="font-size: 18px;" href="{% url 'user:profile' %}">
                                                     Личный кабинет
-                                                </a>
+                                                    </a>
+                                                {% else %}
+                                                    <a class="nav--top__link   position-relative f-400 cod__black-color" style="font-size: 18px;" href="{% url 'user:login' %}">
+                                                        Личный кабинет
+                                                    </a>
+                                                {% endif %}
                                             </li>
                                         </ul>
                                     </nav>

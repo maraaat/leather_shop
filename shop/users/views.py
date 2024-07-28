@@ -40,6 +40,14 @@ def reg(request):
     return render(request, "users/registration.html", context)
 
 
+def logout(request):
+    categories = Categories.objects.all()
+    context = {
+        'categories': categories,
+    }
+    auth.logout(request)
+    return HttpResponseRedirect(reverse('user:login'))
+
 def profile(request):
     categories = Categories.objects.all()
     context = {
@@ -57,5 +65,13 @@ def history(request):
     context = {
         'categories': categories,
     }
+    if request.user.is_authenticated:
+        return render(request, "users/order_history.html", context)
+    else:
+        return render(request, "users/login.html", context)
 
-    return render(request, "users/order_history.html", context)
+
+def save_changes(request):
+
+
+
